@@ -1,10 +1,10 @@
 package com.example.newsnow;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
+import android.view.View;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -13,13 +13,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashActivity.this,MainActivity.class));
-                finish();
-            }
-        },3000);
+        Log.d("SplashActivity", "Splash screen displayed");
 
+        View rootView = findViewById(android.R.id.content);
+        rootView.postDelayed(() -> {
+            Log.d("SplashActivity", "Navigating to MainActivity");
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        }, 3000);
     }
 }
